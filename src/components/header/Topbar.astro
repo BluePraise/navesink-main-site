@@ -1,0 +1,152 @@
+<div class="header-top-bar">
+	<div class="row align-items-center container">
+		<div class="header-left col-lg-4 col-md-12 col-12">
+			<p>
+					Get organized today.
+			</p>
+		</div>
+		<div class="col-lg-8 col-md-12 col-12 header-right">
+
+				<div class="address-content">
+					<p>
+						<i class="las la-map-pin"></i>
+						<span>New Jersey, USA</span>
+					</p>
+					<p>
+						<i class="las la-phone"></i><a href="#">(908) 299-6145</a>
+					</p>
+				</div>
+				<!-- <div class="social-icon-wrapper">
+					<ul class="social-icon social-default icon-naked">
+						{
+							socialLinks.map((link, index) => (
+								<li key={index}>
+									<a href={link.href}>
+										<i class={link.iconClass} />
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</div> -->
+
+		</div>
+	</div>
+</div>
+
+<style>
+	.header-top-bar {
+		padding: 10px 0;
+		background-color: var(--color-primary);
+		color: #fff;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 991px) {
+		.header-top-bar .header-left {
+			text-align: center;
+		}
+	}
+	@media only screen and (max-width: 767px) {
+		.header-top-bar .header-left {
+			text-align: center;
+		}
+	}
+	.header-top-bar .header-left p {
+		margin-bottom: 0;
+	}
+	.header-top-bar p a {
+		color: #fff;
+		transition: 0.3s;
+	}
+	.header-top-bar .header-left p a i {
+		position: relative;
+		top: 2px;
+	}
+	.header-top-bar .header-right {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		flex-wrap: wrap;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 991px) {
+		.header-top-bar .header-right {
+			justify-content: center;
+			margin-top: 6px;
+		}
+	}
+	@media only screen and (max-width: 767px) {
+		.header-top-bar .header-right {
+			justify-content: center;
+			margin-top: 6px;
+		}
+	}
+	.header-top-bar .header-right .address-content {
+		display: flex;
+		align-items: center;
+		margin: 0 -10px;
+	}
+	.header-top-bar .header-right .address-content p {
+		margin-bottom: 0;
+		padding: 0 10px;
+		font-size: 14px;
+		position: relative;
+		display: flex;
+		align-items: center;
+	}
+	@media only screen and (max-width: 575px) {
+		.header-top-bar .header-right .address-content p {
+			padding: 0 8px;
+		}
+	}
+	.header-top-bar .header-right .address-content p + p::before {
+		position: absolute;
+		content: "";
+		height: 20px;
+		width: 2px;
+		background: var(--color-border);
+		top: 50%;
+		transform: translateY(-50%);
+		left: -1px;
+	}
+	.header-top-bar .header-right .address-content p a {
+		transition: 0.3s;
+	}
+	.header-top-bar .header-right .address-content p i {
+		margin-right: 8px;
+		font-size: 16px;
+	}
+	.header-top-bar .social-default.icon-naked li {
+		margin: 1px;
+	}
+	.header-top-bar .social-default.icon-naked li a {
+		color: var(--color-body);
+		font-size: 15px;
+		line-height: 26px;
+	}
+	.header-top-bar .social-icon-wrapper {
+		position: relative;
+		margin-left: 10px;
+		padding-left: 10px;
+	}
+	@media only screen and (max-width: 575px) {
+		.header-top-bar .social-icon-wrapper {
+			margin-left: 0;
+			padding-left: 0;
+			flex-basis: 100%;
+		}
+	}
+	.header-top-bar .social-icon-wrapper::before {
+		position: absolute;
+		content: "";
+		height: 20px;
+		width: 2px;
+		background: var(--color-border);
+		top: 50%;
+		transform: translateY(-50%);
+		left: -1px;
+	}
+	@media only screen and (max-width: 575px) {
+		.header-top-bar .social-icon-wrapper::before {
+			display: none;
+		}
+	}
+</style>

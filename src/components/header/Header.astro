@@ -1,0 +1,204 @@
+---
+import Topbar from "./Topbar.astro";
+
+// Props for the header - similar to the React component
+interface Props {
+	btnClass?: string;
+}
+
+const { btnClass = "btn btn-primary btn-sm rounded-pill" } = Astro.props;
+
+const navLinks = [
+	{ text: "Home", href: "/" },
+	{ text: "How it works", href: "#services" },
+	{ text: "Pricing", href: "/about" },
+	{ text: "Contact", href: "/contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<Topbar />
+<header class="header-sticky">
+	<div class="container row align-items-center">
+		<div class="col-lg-3 col-md-6 col-4">
+			<div class="header-left d-flex">
+				<!-- Logo -->
+				<div class="title logo">
+					<a href="/"> Navesink Digital </a>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-9 col-md-6 col-8">
+			<div class="header-right">
+				<!-- Desktop Navigation -->
+				<nav class="mainmenu-nav d-none d-lg-block">
+					<ul class="mainmenu">
+						{
+							navLinks.map((link) => (
+								<li>
+									<a
+										href={link.href}
+										class={
+											currentPath === link.href
+												? "active"
+												: ""
+										}>
+										{link.text}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</nav>
+				<!-- CTA Button -->
+				<div class="header-btn">
+					<a class={btnClass} href="/contact"> Get Started </a>
+				</div>
+
+				<!-- Mobile Menu Button -->
+				<div class="mobile-menu-bar ml--5 d-block d-lg-none">
+					<div class="hamberger">
+						<button
+							class="hamberger-button"
+							aria-label="Toggle mobile menu">
+							<i class="feather-menu"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<style>
+	.header-sticky {
+		background-color: #fff;
+		position: sticky;
+		top: 0;
+		z-index: 1050;
+		transition: all 0.3s ease;
+		padding: 15px 0;
+	}
+
+	.header-left {
+		align-items: center;
+	}
+
+	.logo {
+		margin-right: 50px;
+	}
+	.title.logo {
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: var(--color-gray-900, #111827);
+	}
+	.title.logo a {
+		font-family: var(--font-display, sans-serif);
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.logo img {
+		max-height: 50px;
+		width: auto;
+	}
+
+	.mainmenu {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: flex;
+		gap: 2rem;
+	}
+
+	.mainmenu li {
+		position: relative;
+	}
+
+	.mainmenu a {
+		text-decoration: none;
+		color: var(--color-gray-700, #374151);
+		font-weight: 500;
+		padding: 10px 0;
+		transition: color 0.3s ease;
+		position: relative;
+	}
+
+	.mainmenu a:hover,
+	.mainmenu a.active {
+		color: var(--color-primary, #2563eb);
+	}
+
+	.mainmenu a.active::after {
+		content: "";
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--color-primary, #2563eb);
+	}
+
+	.header-right {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		justify-content: flex-end;
+	}
+
+	.header-btn .btn {
+		padding: 12px 25px;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 25px;
+		transition: all 0.3s ease;
+	}
+
+	.hamberger-button {
+		background: none;
+		border: none;
+		font-size: 1.5rem;
+		color: var(--color-gray-700, #374151);
+		cursor: pointer;
+		padding: 10px;
+		transition: color 0.3s ease;
+	}
+
+	.hamberger-button:hover {
+		color: var(--color-primary, #2563eb);
+	}
+
+	/* Responsive adjustments */
+	@media (max-width: 991.98px) {
+		.logo {
+			margin-right: 0;
+		}
+
+		.container-wrapper {
+			padding: 10px 0;
+		}
+	}
+
+	@media (max-width: 767.98px) {
+		.header-btn .btn {
+			font-size: 0.875rem;
+			padding: 8px 20px;
+		}
+	}
+</style>
+
+<script>
+	// Mobile menu toggle functionality
+	document.addEventListener("DOMContentLoaded", function () {
+		const mobileMenuButton = document.querySelector(".hamberger-button");
+		if (mobileMenuButton) {
+			mobileMenuButton.addEventListener("click", function () {
+				// You can implement mobile menu toggle logic here
+				// This would typically show/hide a mobile navigation panel
+				console.log("Mobile menu clicked");
+			});
+		}
+	});
+</script>

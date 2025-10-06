@@ -1,0 +1,142 @@
+---
+
+---
+
+<section class="hero text-white">
+	<div class="container">
+		<h1 class="">
+			Your Digital World, <br />
+			<span class="text-primary-200 rotating" id="rotating-text">
+				Organized.
+			</span>
+		</h1>
+		<p class="lead">
+			Make sure your digital life is in order and focus on what matters.
+		</p>
+		<ul class="unlist mb-4">
+			<li>
+				<i class="las la-check-double"></i><strong>Organized</strong>:
+				Your passwords, files and media in order.
+			</li>
+			<li>
+				<i class="las la-check-double"></i><strong>Easy</strong>: Access
+				your important information anytime, anywhere.
+			</li>
+			<li>
+				<i class="las la-check-double"></i><strong>Efficient</strong>:
+				Streamline your digital workflows for maximum productivity.
+			</li>
+		</ul>
+		<div class="button-group">
+			<a href="/contact" class="btn btn-secondary">
+				Get Organized Today
+			</a>
+			<a href="/services" class="btn link text-white"> Learn More </a>
+		</div>
+	</div>
+</section>
+<style>
+	.hero {
+		min-height: calc(80vh - 70px);
+		box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+		background-color: var(--color-primary);
+		padding: 8em 0;
+		margin: auto;
+		color: #fff;
+	}
+
+	.hero p {
+		margin: 30px 0;
+		text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+	}
+	.hero .btn-primary,
+	.hero .btn-secondary {
+		margin: 0 10px;
+	}
+
+	.button-group {
+		margin-top: 4em;
+	}
+
+	.btn.link:hover {
+		text-decoration: underline;
+	}
+	.unlist li {
+		font-size: 1.2rem;
+		margin-bottom: 20px;
+	}
+	.unlist li strong {
+		font-family: var(--font-display, sans-serif);
+		font-size: 1.4rem;
+	}
+	.las {
+		font-size: 1.5rem;
+		background-color: black;
+		color: white;
+		border-radius: 50%;
+		padding: 4px;
+		margin-right: 8px;
+		position: relative;
+		top: 4px;
+	}
+	/* Rotating text animation */
+	.rotating {
+		display: inline-block;
+		min-width: 200px;
+		transition: all 0.2s ease-in-out;
+	}
+
+	.rotating.fade-out {
+		opacity: 0;
+		/* transform: translateY(-20px); */
+	}
+
+	.rotating.fade-in {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
+
+<script>
+	// Text rotation functionality
+	const texts = [
+		"Organized.",
+		"Simple.",
+		"Streamlined.",
+		"Secure.",
+		"Reliable.",
+		"Accessible.",
+		"Efficient.",
+	];
+
+	let currentIndex = 0;
+	const rotatingElement = document.getElementById("rotating-text");
+
+	function rotateText() {
+		if (!rotatingElement) return;
+
+		// Add fade-out class
+		rotatingElement.classList.add("fade-out");
+
+		// After fade-out completes, change text and fade-in
+		setTimeout(() => {
+			if (!rotatingElement) return;
+
+			currentIndex = (currentIndex + 1) % texts.length;
+			rotatingElement.textContent = texts[currentIndex];
+			rotatingElement.classList.remove("fade-out");
+			rotatingElement.classList.add("fade-in");
+
+			// Remove fade-in class after animation
+			setTimeout(() => {
+				if (!rotatingElement) return;
+				rotatingElement.classList.remove("fade-in");
+			}, 500);
+		}, 500);
+	}
+
+	// Start the rotation when the page loads
+	if (rotatingElement) {
+		setInterval(rotateText, 3000); // Change text every 3 seconds
+	}
+</script>
