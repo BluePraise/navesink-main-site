@@ -24,9 +24,15 @@ import { pricing } from "../../data/pricing.js";
 								</li>
 							))}
 						</ul>
-						<a href="/contact" class="btn btn-primary w-full">
-							Get Started
+						<a href={plan.buttonURL} class="btn btn-primary w-full">
+							{plan.buttonText}
 						</a>
+
+							<div class="mt-2 text-center">
+								<a href={plan.buttonURL} class="link text-primary">
+									{plan.linkText}
+								</a>
+							</div>
 					</div>
 				))
 			}
@@ -66,9 +72,12 @@ import { pricing } from "../../data/pricing.js";
 	.pricing-features li {
 		border-bottom: 1px solid var(--color-primary);
 		padding: 1rem 0;
+		text-align: left;
 	}
 
 	.pricing-features li i {
+		max-height: 26px;
+		display: block;
 		font-size: 1.2rem;
 		color: #fff;
 		background-color: var(--color-primary);
@@ -76,5 +85,4 @@ import { pricing } from "../../data/pricing.js";
 		margin-right: 0.5rem;
 		padding: 0.2rem;
 	}
-
 </style>
