@@ -1,4 +1,16 @@
-export const services = [
+export const pricing = [
+    {
+        id: 'diy-kit',
+        title: 'DIY Organization Kit',
+        description: 'Step-by-step guide to organize your digital life on your own',
+        price: 'Free',
+        features: [
+            'Comprehensive checklist',
+            'Recommended tools',
+            'Best practices',
+            'Maintenance tips'
+        ]
+    },
     {
         id: 'consultation',
         title: 'Digital Life Organization Session',

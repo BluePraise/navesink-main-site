@@ -1,13 +1,6 @@
 ---
 import Topbar from "./Topbar.astro";
 
-// Props for the header - similar to the React component
-interface Props {
-	btnClass?: string;
-}
-
-const { btnClass = "btn btn-primary btn-sm rounded-pill" } = Astro.props;
-
 const navLinks = [
 	{ text: "Home", href: "/" },
 	{ text: "How it works", href: "#services" },
@@ -54,7 +47,7 @@ const currentPath = Astro.url.pathname;
 				</nav>
 				<!-- CTA Button -->
 				<div class="header-btn">
-					<a class={btnClass} href="/contact"> Get Started </a>
+					<a class="btn btn-primary btn-sm rounded-pill" href="/contact"> Get Started </a>
 				</div>
 
 				<!-- Mobile Menu Button -->
