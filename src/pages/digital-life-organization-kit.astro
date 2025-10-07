@@ -16,7 +16,7 @@ import SubscribeFreeKit from "../components/cta/SubscribeFreeKit.astro";
 				</p>
 			</div>
 		</section>
-		<section class="container col-md-6 mx-auto">
+		<section class="included container col-md-6 mx-auto">
 			<h2 class="mt-4 text-center">What's Included:</h2>
 			<ul class="unlist">
 				<li>
@@ -171,5 +171,23 @@ import SubscribeFreeKit from "../components/cta/SubscribeFreeKit.astro";
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 		text-align: center;
 		color: #fff;
+	}
+	@media (max-width: 768px) {
+		section ul {
+			flex-direction: column;
+			gap: 2rem;
+		}
+		section ul li {
+			text-align: center;
+		}
+
+		.included ul li i {
+			display: inline-block;
+			margin: 0 auto 10px;
+		}
+		.included ul li h4 {
+			display: block;
+			margin-bottom: 0.5rem;
+		}
 	}
 </style>

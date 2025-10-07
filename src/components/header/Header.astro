@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
 <header class="header-sticky">
 	<div class="container row align-items-center">
 		<div class="col-lg-3 col-md-6 col-4">
-			<div class="header-left d-flex">
+			<div class="header-left flex">
 				<!-- Logo -->
 				<div class="title logo">
 					<a href="/"> Navesink Digital </a>
@@ -23,8 +23,8 @@ const currentPath = Astro.url.pathname;
 			</div>
 		</div>
 
-		<div class="col-lg-9 col-md-6 col-8">
-			<div class="header-right">
+
+			<div class="header-right col-lg-9 col-md-6 col-8">
 				<!-- Desktop Navigation -->
 				<nav class="mainmenu-nav d-none d-lg-block">
 					<ul class="mainmenu">
@@ -47,12 +47,16 @@ const currentPath = Astro.url.pathname;
 				</nav>
 				<!-- CTA Button -->
 				<div class="header-btn">
-					<a class="btn btn-primary btn-sm rounded-pill" href="/contact"> Get Started </a>
+					<a
+						class="btn btn-primary btn-sm rounded-pill"
+						href="/contact">
+						Get Started
+					</a>
 				</div>
 
 				<!-- Mobile Menu Button -->
-				<div class="mobile-menu-bar ml--5 d-block d-lg-none">
-					<div class="hamberger">
+				<div class="mobile-menu-bar d-none">
+					<div class="hamberger d-none">
 						<button
 							class="hamberger-button"
 							aria-label="Toggle mobile menu">
@@ -61,7 +65,7 @@ const currentPath = Astro.url.pathname;
 					</div>
 				</div>
 			</div>
-		</div>
+
 	</div>
 </header>
 
@@ -82,15 +86,14 @@ const currentPath = Astro.url.pathname;
 	.logo {
 		margin-right: 50px;
 	}
-	.title.logo {
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--color-gray-900, #111827);
-	}
-	.title.logo a {
+	.title a {
 		font-family: var(--font-display, sans-serif);
 		color: inherit;
 		text-decoration: none;
+		font-size: 1.5rem;
+		line-height: 1.2;
+		font-weight: 700;
+		color: var(--color-gray-900, #111827);
 	}
 
 	.logo img {
@@ -175,6 +178,10 @@ const currentPath = Astro.url.pathname;
 	}
 
 	@media (max-width: 767.98px) {
+		.title a {
+			display: block;
+			font-size: 18px;
+		}
 		.header-btn .btn {
 			font-size: 0.875rem;
 			padding: 8px 20px;

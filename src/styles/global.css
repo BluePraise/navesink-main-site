@@ -203,6 +203,12 @@ h6 {
     display: flex;
     gap: var(--spacing-md);
 }
+@media (max-width: 640px) {
+    .button-group {
+        flex-direction: column;
+        gap: 0;
+    }
+}
 
 /* ===== Cards ===== */
 .card {
