@@ -1,0 +1,70 @@
+---
+// A call-to-action component for subscribing to a free kit.
+const { title = "Ready to organize?" } = Astro.props;
+---
+
+<section class="subscribe-free-kit my-5 py-5 text-center bg-light">
+	<div class="container col-md-8 mx-auto">
+		<h2 class="mb-4">{title}</h2>
+
+		<p class="col-md-6 mx-auto">
+			Sign up with your email to receive our comprehensive kit that
+			includes a step-by-step guide, worksheets, tips, and resources to
+			help you organize your digital life effectively.
+		</p>
+        <p class="italic">
+            We respect your privacy. Unsubscribe at any time.
+        </p>
+		<form class="vstack gap-3 col-md-4" action="/subscribe" method="POST">
+			<!-- <div class="col-auto- mb-3"> -->
+				<input
+					type="text"
+					class="form-control"
+					name="name"
+					placeholder="Enter your name"
+					required
+				/>
+			<!-- </div> -->
+			<!-- <div class="col-auto- mb-3"> -->
+				<input
+					type="email"
+					class="form-control"
+					name="email"
+					placeholder="Enter your email"
+					required
+				/>
+			<!-- </div> -->
+			<div class="col-auto">
+				<button type="submit" class="btn btn-primary mb-3">
+					Get the Free Kit
+				</button>
+			</div>
+		</form>
+	</div>
+</section>
+<style>
+    .subscribe-free-kit form.vstack {
+        margin: auto;
+        padding: 20px;
+    }
+    .subscribe-free-kit input.form-control {
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: var(--radius-md);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .subscribe-free-kit input.form-control:focus {
+        border-color: var(--color-primary);
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    .italic {
+        font-style: italic;
+        color: gray;
+        font-size: 0.9rem;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+</style>

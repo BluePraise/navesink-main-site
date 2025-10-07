@@ -160,6 +160,7 @@ h6 {
     align-items: center;
     justify-content: center;
     padding: 0.75rem 1.5rem;
+    font-family: var(--font-display);
     font-weight: 600;
     font-size: 1rem;
     border-radius: var(--radius-lg);
@@ -167,7 +168,6 @@ h6 {
     border: none;
     cursor: pointer;
     transition: all var(--transition-base);
-    font-family: var(--font-sans);
 }
 
 .btn-primary {
@@ -314,4 +314,15 @@ h6 {
 
 .gap-lg {
     gap: var(--spacing-lg);
+}
+
+.circle-icon__black-bg {
+    padding: 4px;
+    margin-right: 8px;
+    position: relative;
+    top: 4px;
+    font-size: 1.5rem;
+    background-color: black;
+    color: white;
+    border-radius: 50%;
 }

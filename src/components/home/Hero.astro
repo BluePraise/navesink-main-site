@@ -1,31 +1,31 @@
----
-
----
-
 <section class="hero text-white">
 	<div class="container row align-items-center">
 		<div class="col-md-8">
-			<h1 class='display-3'>
+			<h1 class="display-3">
 				Your Digital World, <br />
 				<span class="text-primary-200 rotating" id="rotating-text">
 					Organized.
 				</span>
 			</h1>
 			<p class="lead">
-				Make sure your digital life is in order and focus on what matters.
+				Make sure your digital life is in order and focus on what
+				matters.
 			</p>
 			<ul class="unlist mb-4">
 				<li>
-					<i class="las la-check-double"></i><strong>Organized</strong>:
-					Your passwords, files and media in order.
+					<i class="las la-check-double circle-icon__black-bg"
+					></i><strong>Organized</strong>: Your passwords, files and
+					media in order.
 				</li>
 				<li>
-					<i class="las la-check-double"></i><strong>Easy</strong>: Access
-					your important information anytime, anywhere.
+					<i class="las la-check-double circle-icon__black-bg"
+					></i><strong>Easy</strong>: Access your important
+					information anytime, anywhere.
 				</li>
 				<li>
-					<i class="las la-check-double"></i><strong>Efficient</strong>:
-					Streamline your digital workflows for maximum productivity.
+					<i class="las la-check-double circle-icon__black-bg"
+					></i><strong>Efficient</strong>: >: Streamline your digital
+					workflows for maximum productivity.
 				</li>
 			</ul>
 			<div class="button-group">
@@ -48,7 +48,11 @@
 	.hero {
 		min-height: calc(80vh - 70px);
 		box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
-		background-color: var(--color-primary);
+		background: linear-gradient(
+			135deg,
+			var(--color-primary) 0%,
+			var(--color-secondary) 100%
+		);
 		padding: 8em 0;
 		margin: auto;
 		color: #fff;
@@ -78,16 +82,7 @@
 		font-family: var(--font-display, sans-serif);
 		font-size: 1.4rem;
 	}
-	.las {
-		font-size: 1.5rem;
-		background-color: black;
-		color: white;
-		border-radius: 50%;
-		padding: 4px;
-		margin-right: 8px;
-		position: relative;
-		top: 4px;
-	}
+
 	/* Rotating text animation */
 	.rotating {
 		display: inline-block;
