@@ -37,7 +37,7 @@ exports.handler = async (event) => {
                 fields: {
                     name: name
                 },
-                groups: [process.env.MAILERLITE_GROUP_ID]
+                groups: [parseInt(process.env.MAILERLITE_GROUP_ID)]
             })
         });
 
