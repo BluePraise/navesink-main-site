@@ -1,5 +1,4 @@
 ---
-// A call-to-action component for subscribing to a free kit.
 const { title = "Ready to organize?" } = Astro.props;
 ---
 
@@ -15,33 +14,34 @@ const { title = "Ready to organize?" } = Astro.props;
         <p class="italic">
             We respect your privacy. Unsubscribe at any time.
         </p>
-		<form class="vstack gap-3 col-md-4" action="/subscribe" method="POST">
-			<!-- <div class="col-auto- mb-3"> -->
-				<input
-					type="text"
-					class="form-control"
-					name="name"
-					placeholder="Enter your name"
-					required
-				/>
-			<!-- </div> -->
-			<!-- <div class="col-auto- mb-3"> -->
-				<input
-					type="email"
-					class="form-control"
-					name="email"
-					placeholder="Enter your email"
-					required
-				/>
-			<!-- </div> -->
+
+		<form id="subscribe-form" class="vstack gap-3 col-md-4">
+			<input
+				type="text"
+				class="form-control"
+				name="name"
+				id="name"
+				placeholder="Enter your name"
+				required
+			/>
+			<input
+				type="email"
+				class="form-control"
+				name="email"
+				id="email"
+				placeholder="Enter your email"
+				required
+			/>
 			<div class="col-auto">
 				<button type="submit" class="btn btn-primary mb-3">
 					Get the Free Kit
 				</button>
 			</div>
+			<div id="message" class="alert" style="display: none;"></div>
 		</form>
 	</div>
 </section>
+
 <style>
     .subscribe-free-kit form.vstack {
         margin: auto;
@@ -67,4 +67,67 @@ const { title = "Ready to organize?" } = Astro.props;
         margin-top: -10px;
         margin-bottom: 10px;
     }
+    .alert {
+        padding: 1rem;
+        border-radius: var(--radius-md);
+        margin-top: 1rem;
+    }
+    .alert-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+    .alert-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
 </style>
+
+<script>
+    const form = document.getElementById('subscribe-form') as HTMLFormElement;
+    const messageDiv = document.getElementById('message') as HTMLDivElement;
+    const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
+
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('name') as HTMLInputElement;
+        const emailInput = document.getElementById('email') as HTMLInputElement;
+
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Subscribing...';
+        messageDiv.style.display = 'none';
+
+        try {
+            const response = await fetch('/api/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: nameInput.value,
+                    email: emailInput.value
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                // Success! Redirect to thank you page
+                window.location.href = '/thank-you';
+            } else {
+                throw new Error(data.error || 'Subscription failed');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            messageDiv.textContent = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+            messageDiv.className = 'alert alert-error';
+            messageDiv.style.display = 'block';
+
+            submitButton.disabled = false;
+            submitButton.textContent = 'Get the Free Kit';
+        }
+    });
+</script>

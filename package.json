@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "netlify:dev": "netlify dev"
   },
   "dependencies": {
     "@astrojs/react": "^4.4.0",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "bootstrap": "^5.3.8",
+    "netlify-cli": "^23.9.1",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1"
   }

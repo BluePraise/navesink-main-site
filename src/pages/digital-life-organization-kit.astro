@@ -109,31 +109,33 @@ import SubscribeFreeKit from "../components/cta/SubscribeFreeKit.astro";
 						We respect your privacy. Unsubscribe at any time.
 					</p>
 					<form
-						class="vstack gap-3 col-md-4 mx-auto"
-						action="/subscribe"
-						method="POST">
-
+						id="subscribe-form-banner"
+						class="vstack gap-3 col-md-4 mx-auto">
 						<input
 							type="text"
 							class="form-control"
 							name="name"
+							id="banner-name"
 							placeholder="Enter your name"
 							required
 						/>
-
-
 						<input
 							type="email"
 							class="form-control"
 							name="email"
+							id="banner-email"
 							placeholder="Enter your email"
 							required
 						/>
-
 						<div class="col-auto">
 							<button type="submit" class="btn btn-primary mb-3">
 								Get the Free Kit
 							</button>
+						</div>
+						<div
+							id="banner-message"
+							class="alert"
+							style="display: none;">
 						</div>
 					</form>
 				</div>
@@ -147,7 +149,11 @@ import SubscribeFreeKit from "../components/cta/SubscribeFreeKit.astro";
 		margin-top: 5rem;
 		padding: 4em 2em;
 		/* Gradient background*/
-		background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+		background: linear-gradient(
+			135deg,
+			var(--color-primary) 0%,
+			var(--color-secondary) 100%
+		);
 		border-radius: 0.5rem;
 		box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 	}
@@ -191,3 +197,61 @@ import SubscribeFreeKit from "../components/cta/SubscribeFreeKit.astro";
 		}
 	}
 </style>
+<script>
+	const bannerForm = document.getElementById(
+		"subscribe-form-banner"
+	) as HTMLFormElement;
+	const bannerMessageDiv = document.getElementById(
+		"banner-message"
+	) as HTMLDivElement;
+	const bannerSubmitButton = bannerForm?.querySelector(
+		'button[type="submit"]'
+	) as HTMLButtonElement;
+
+	bannerForm?.addEventListener("submit", async (e) => {
+		e.preventDefault();
+
+		const nameInput = document.getElementById(
+			"banner-name"
+		) as HTMLInputElement;
+		const emailInput = document.getElementById(
+			"banner-email"
+		) as HTMLInputElement;
+
+		bannerSubmitButton.disabled = true;
+		bannerSubmitButton.textContent = "Subscribing...";
+		bannerMessageDiv.style.display = "none";
+
+		try {
+			const response = await fetch("/api/subscribe", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					name: nameInput.value,
+					email: emailInput.value,
+				}),
+			});
+
+			const data = await response.json();
+
+			if (response.ok) {
+				window.location.href = "/thank-you";
+			} else {
+				throw new Error(data.error || "Subscription failed");
+			}
+		} catch (error) {
+			console.error("Error:", error);
+			bannerMessageDiv.textContent =
+				error instanceof Error
+					? error.message
+					: "Something went wrong. Please try again.";
+			bannerMessageDiv.className = "alert alert-error";
+			bannerMessageDiv.style.display = "block";
+
+			bannerSubmitButton.disabled = false;
+			bannerSubmitButton.textContent = "Get the Free Kit";
+		}
+	});
+</script>
